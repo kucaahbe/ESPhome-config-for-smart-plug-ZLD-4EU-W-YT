@@ -1,0 +1,27 @@
+# Board: Generic - BK7231N (Tuya QFN32)
+# Definition: definitions/boards/generic-bk7231n-qfn32-tuya/manifest.yaml
+
+esphome:
+  name: smart-plug-zld-44eufr-w-yt
+  friendly_name: smart plug ZLD-44EU(FR)-W-YT
+
+bk72xx:
+  board: generic-bk7231n-qfn32-tuya
+
+logger:
+
+api:
+  encryption:
+    key: "JNXLn7ILh6wwnTVqQZFaym8RwlzpWVqkjj1343cIiCw="
+
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: smart plug ZLD- Fallback Hotspot
+    password: "VVbhfr6FskRi"
+
+captive_portal:
