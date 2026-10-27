@@ -38,7 +38,7 @@ switch:
     pin: P9
     id: socket1
     icon: "mdi:power-socket-eu"
-    inverted: true
+    inverted: false
   - platform: gpio
     name: Socket 3
     pin: P24
@@ -60,11 +60,11 @@ light:
     id: led_main
     output: light_output_main
     internal: true
-  - platform: binary
-    name: Socket 4 LED
-    id: led4
-    output: light_output4
-    internal: true
+  #- platform: binary
+  #  name: Socket 4 LED
+  #  id: led4
+  #  output: light_output4
+  #  internal: true
 
 binary_sensor:
   - platform: gpio
@@ -80,15 +80,16 @@ binary_sensor:
         - light.turn_off: led_main
         - light.turn_on: led_main
     device_class: power
+
 output:
   - id: light_output_main
     platform: gpio
     inverted: true
     pin: P14
-  - id: light_output4
-    platform: gpio
-    inverted: true
-    pin: P8
+  #- id: light_output4
+  #  platform: gpio
+  #  inverted: true
+  #  pin: P8
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
 sensor:
