@@ -23,9 +23,8 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ap:
-    ssid: smart plug ZLD- Fallback Hotspot
-    password: "VVbhfr6FskRi"
-
+    ssid: smart plug Hotspot
+    password: VVbhfr6FskRi
 captive_portal:
 
 substitutions:
@@ -35,7 +34,7 @@ substitutions:
 # The main relay is connected to P26
 switch:
   - platform: gpio
-    name: Socket
+    name: Socket 1
     pin: P26
     id: socket1
     on_turn_on:
@@ -44,6 +43,7 @@ switch:
     on_turn_off: 
       then:
         light.turn_off: led1
+    icon: "mdi:power-socket-eu"
 
 # The button on the side of the socket is wired to P11
 binary_sensor:
