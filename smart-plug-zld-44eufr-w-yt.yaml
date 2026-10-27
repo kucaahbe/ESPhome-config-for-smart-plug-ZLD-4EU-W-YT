@@ -62,7 +62,7 @@ binary_sensor:
         input: true
         pullup: false
       inverted: true
-    name: Button
+    name: On/Off
     on_click:
       min_length: 50ms
       then:
