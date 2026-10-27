@@ -35,14 +35,10 @@ substitutions:
 switch:
   - platform: gpio
     name: Socket 1
-    pin:
-      number: P6
-      mode:
-        output: true
-        open_drain: true
-      inverted: true
+    pin: P6
     id: socket1
     icon: "mdi:power-socket-eu"
+    restore_mode: ALWAYS_ON
   - platform: gpio
     name: Socket 2
     pin: P7
