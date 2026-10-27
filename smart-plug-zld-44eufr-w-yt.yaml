@@ -35,13 +35,13 @@ substitutions:
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P24
+    pin: P9
     id: socket1
     icon: "mdi:power-socket-eu"
     inverted: true
   - platform: gpio
     name: Socket 3
-    pin: P26
+    pin: P24
     id: socket3
     #on_turn_on:
     #  then:
@@ -50,7 +50,7 @@ switch:
     #  then:
     #    light.turn_off: led1
     icon: "mdi:power-socket-eu"
-    inverted: false
+    inverted: true
 
 
 # The LED is directly controlled via the state of the relay with the switch above
