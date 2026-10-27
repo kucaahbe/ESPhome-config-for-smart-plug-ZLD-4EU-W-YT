@@ -34,8 +34,8 @@ substitutions:
 # p9 - unknown
 switch:
   - platform: gpio
-    name: Socket 1
-    pin: P9
+    name: Socket 2
+    pin: P7
     id: socket1
     icon: "mdi:power-socket-eu"
     inverted: false
@@ -94,7 +94,7 @@ sensor:
   - platform: hlw8012
     model: BL0937
     cf_pin:
-      number: P7
+      number: P26 # temp
       inverted: true
     cf1_pin:
       number: P6
