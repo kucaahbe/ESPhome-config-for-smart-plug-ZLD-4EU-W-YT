@@ -51,7 +51,7 @@ switch:
     #  then:
     #    light.turn_off: led1
     icon: "mdi:power-socket-eu"
-    inverted: true
+    inverted: false
 
 
 # The LED is directly controlled via the state of the relay with the switch above
