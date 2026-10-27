@@ -35,7 +35,7 @@ substitutions:
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P17
+    pin: P24
     id: socket1
     icon: "mdi:power-socket-eu"
     inverted: true
@@ -105,7 +105,7 @@ sensor:
       number: P6
       inverted: true
     sel_pin:
-      number: P24
+      number: P21 #P24
       inverted: true
     current:
       name: BL0937 Current
