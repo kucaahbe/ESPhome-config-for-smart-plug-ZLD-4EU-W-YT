@@ -31,12 +31,14 @@ substitutions:
   bl0937_voltage_divider: "750"
   bl0937_current_resistor: "0.0025 ohm"
 
+# p9 - unknown
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P9
+    pin: P11
     id: socket1
     icon: "mdi:power-socket-eu"
+    inverted: true
   - platform: gpio
     name: Socket 3
     pin: P26
@@ -48,6 +50,7 @@ switch:
       then:
         light.turn_off: led1
     icon: "mdi:power-socket-eu"
+    inverted: true
 
 
 # The LED is directly controlled via the state of the relay with the switch above
