@@ -45,6 +45,14 @@ switch:
         light.turn_off: led1
     icon: "mdi:power-socket-eu"
 
+# The LED is directly controlled via the state of the relay with the switch above
+light:
+  - platform: binary
+    name: Socket 1 LED
+    id: led1
+    output: light_output
+    internal: true
+
 # The button on the side of the socket is wired to P11
 binary_sensor:
   - platform: gpio
@@ -59,14 +67,6 @@ binary_sensor:
       min_length: 50ms
       then:
         switch.toggle: socket1
-
-# The LED is directly controlled via the state of the relay with the switch above
-light:
-  - platform: binary
-    name: "LED"
-    id: led1
-    output: light_output
-    internal: true
 
 output:
   - id: light_output
