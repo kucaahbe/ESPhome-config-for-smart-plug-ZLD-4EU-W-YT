@@ -32,11 +32,10 @@ substitutions:
   bl0937_current_resistor: "0.0025 ohm"
 
 # p9 - unknown
-# p11 main/wifi led
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P11
+    pin: P15
     id: socket1
     icon: "mdi:power-socket-eu"
     inverted: true
@@ -80,7 +79,7 @@ binary_sensor:
       then:
         - light.turn_off: led_main
         - light.turn_on: led_main
-
+    device_class: power
 output:
   - id: light_output_main
     platform: gpio
