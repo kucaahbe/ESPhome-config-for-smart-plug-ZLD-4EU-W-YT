@@ -31,12 +31,16 @@ substitutions:
   bl0937_voltage_divider: "750"
   bl0937_current_resistor: "0.0025 ohm"
 
-# The main relay is connected to P26
 switch:
+  - platform: gpio
+    name: Socket 1
+    pin: P9
+    id: socket1
+    icon: "mdi:power-socket-eu"
   - platform: gpio
     name: Socket 3
     pin: P26
-    id: socket1
+    id: socket3
     on_turn_on:
       then:
         light.turn_on: led1
@@ -44,6 +48,7 @@ switch:
       then:
         light.turn_off: led1
     icon: "mdi:power-socket-eu"
+
 
 # The LED is directly controlled via the state of the relay with the switch above
 light:
@@ -61,7 +66,7 @@ binary_sensor:
       mode:
         input: true
         pullup: false
-      inverted: true
+      #inverted: true
     name: Power On
     on_click:
       min_length: 50ms
