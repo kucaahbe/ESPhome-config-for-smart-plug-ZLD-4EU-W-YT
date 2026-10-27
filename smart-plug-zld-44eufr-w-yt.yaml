@@ -54,6 +54,11 @@ switch:
     pin: P8
     id: socket4
     icon: "mdi:power-socket-eu"
+  - platform: gpio
+    name: USB
+    pin: P26
+    id: usb
+    icon: "mdi:power-socket-eu"
 
 # The LED is directly controlled via the state of the relay with the switch above
 light:
