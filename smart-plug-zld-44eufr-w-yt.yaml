@@ -35,7 +35,7 @@ substitutions:
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P8
+    pin: P9
     id: socket1
     icon: "mdi:power-socket-eu"
   - platform: gpio
@@ -47,6 +47,11 @@ switch:
     name: Socket 3
     pin: P24
     id: socket3
+    icon: "mdi:power-socket-eu"
+  - platform: gpio
+    name: Socket 4
+    pin: P8
+    id: socket4
     icon: "mdi:power-socket-eu"
 
 # The LED is directly controlled via the state of the relay with the switch above
