@@ -34,7 +34,7 @@ substitutions:
 # The main relay is connected to P26
 switch:
   - platform: gpio
-    name: Socket 1
+    name: Socket 3
     pin: P26
     id: socket1
     on_turn_on:
