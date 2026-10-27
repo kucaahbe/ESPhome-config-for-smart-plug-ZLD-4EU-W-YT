@@ -36,7 +36,7 @@ switch:
   - platform: gpio
     name: Socket 2
     pin: P7
-    id: socket1
+    id: socket2
     icon: "mdi:power-socket-eu"
     inverted: false
   - platform: gpio
