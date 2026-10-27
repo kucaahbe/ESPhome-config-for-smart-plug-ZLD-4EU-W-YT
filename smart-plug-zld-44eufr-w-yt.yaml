@@ -44,12 +44,12 @@ switch:
     name: Socket 3
     pin: P26
     id: socket3
-    on_turn_on:
-      then:
-        light.turn_on: led1
-    on_turn_off: 
-      then:
-        light.turn_off: led1
+    #on_turn_on:
+    #  then:
+    #    light.turn_on: led1
+    #on_turn_off: 
+    #  then:
+    #    light.turn_off: led1
     icon: "mdi:power-socket-eu"
     inverted: true
 
@@ -57,12 +57,16 @@ switch:
 # The LED is directly controlled via the state of the relay with the switch above
 light:
   - platform: binary
-    name: Socket 1 LED
-    id: led1
-    output: light_output
+    name: Main LED
+    id: led_main
+    output: light_output_main
+    internal: true
+  - platform: binary
+    name: Socket 4 LED
+    id: led4
+    output: light_output4
     internal: true
 
-# The button on the side of the socket is wired to P11
 binary_sensor:
   - platform: gpio
     pin:
@@ -70,15 +74,17 @@ binary_sensor:
       mode:
         input: true
         pullup: false
-      #inverted: true
     name: Power On
     on_click:
       min_length: 50ms
-      then:
-        switch.toggle: socket1
+      then: []
 
 output:
-  - id: light_output
+  - id: light_output_main
+    platform: gpio
+    inverted: true
+    pin: P14
+  - id: light_output4
     platform: gpio
     inverted: true
     pin: P8
