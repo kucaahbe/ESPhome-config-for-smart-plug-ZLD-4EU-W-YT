@@ -57,10 +57,10 @@ light:
 binary_sensor:
   - platform: gpio
     pin:
-      number: P11
+      number: P10
       mode:
         input: true
-        pullup: true
+        pullup: false
       inverted: true
     name: Button
     on_click:
