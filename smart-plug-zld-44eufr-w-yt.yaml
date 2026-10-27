@@ -32,6 +32,7 @@ substitutions:
   bl0937_current_resistor: "0.0025 ohm"
 
 # p9 - unknown
+# p11 main/wifi led
 switch:
   - platform: gpio
     name: Socket 1
