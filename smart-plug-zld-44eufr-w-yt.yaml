@@ -35,7 +35,11 @@ substitutions:
 switch:
   - platform: gpio
     name: Socket 1
-    pin: P6
+    pin:
+      number: P6
+      mode:
+        output: true
+      inverted: true
     id: socket1
     icon: "mdi:power-socket-eu"
   - platform: gpio
