@@ -93,30 +93,30 @@ output:
   #  pin: P8
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
-sensor:
-  - platform: uptime
-    name: Uptime
-  - platform: internal_temperature
-    name: "Internal Temperature"
-  - platform: hlw8012
-    model: BL0937
-    cf_pin:
-      number: P26 # temp
-      inverted: true
-    cf1_pin:
-      number: P6
-      inverted: true
-    sel_pin:
-      number: P21 #P24
-      inverted: true
-    current:
-      name: BL0937 Current
-    voltage:
-      name: BL0937 Voltage
-    power:
-      name: BL0937 Power
-    energy:
-      name: BL0937 Energy
-    voltage_divider: $bl0937_voltage_divider
-    current_resistor: $bl0937_current_resistor
-    update_interval: 10s
+#sensor:
+#  - platform: uptime
+#    name: Uptime
+#  - platform: internal_temperature
+#    name: "Internal Temperature"
+#  - platform: hlw8012
+#    model: BL0937
+#    cf_pin:
+#      number: P26 # temp
+#      inverted: true
+#    cf1_pin:
+#      number: P6
+#      inverted: true
+#    sel_pin:
+#      number: P21 #P24
+#      inverted: true
+#    current:
+#      name: BL0937 Current
+#    voltage:
+#      name: BL0937 Voltage
+#    power:
+#      name: BL0937 Power
+#    energy:
+#      name: BL0937 Energy
+#    voltage_divider: $bl0937_voltage_divider
+#    current_resistor: $bl0937_current_resistor
+#    update_interval: 10s
