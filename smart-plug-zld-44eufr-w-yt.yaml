@@ -83,7 +83,7 @@ binary_sensor:
     icon: "mdi:power"
     on_click:
       - then:
-          - switch.turn_off: shutdown0
+          - switch.turn_on: shutdown0
 
 output:
   #- id: light_output_main
