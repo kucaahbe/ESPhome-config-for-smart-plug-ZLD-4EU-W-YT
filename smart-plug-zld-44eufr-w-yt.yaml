@@ -69,8 +69,7 @@ light:
   #  id: led_main
   #  output: light_output_main
   - platform: status_led
-    name: Status LED Light
-    id: light_status_led_1
+    id: main_status_led
     pin: P11
 
 binary_sensor:
