@@ -62,7 +62,7 @@ switch:
     inverted: true
     restore_mode: RESTORE_DEFAULT_ON
   - platform: shutdown
-    internal: true
+    internal: false
     id: shutdown0
 
 light:
