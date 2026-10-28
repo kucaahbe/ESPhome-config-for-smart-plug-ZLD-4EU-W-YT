@@ -68,11 +68,7 @@ light:
     id: led_main
     output: light_output_main
     internal: true
-  #- platform: binary
-  #  name: Socket 4 LED
-  #  id: led4
-  #  output: light_output4
-  #  internal: true
+    restore_mode: ALWAYS_ON
 
 binary_sensor:
   - platform: gpio
