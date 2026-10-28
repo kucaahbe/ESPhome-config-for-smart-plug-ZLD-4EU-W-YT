@@ -4,7 +4,7 @@
 esphome:
   name: smart-plug-zld-44eufr-w-yt
   friendly_name: smart plug ZLD-44EU(FR)-W-YT
-  min_version: 2026.1.0
+  min_version: 2026.7.0
 
 bk72xx:
   board: generic-bk7231n-qfn32-tuya
@@ -14,19 +14,23 @@ bk72xx_ble:
 
 logger:
 
+# No API key is compiled in: Home Assistant generates one when the device is
+# added and the plug stores it in flash until a factory reset.
 api:
-  encryption:
-    key: !secret smart_plug_zld_44eufr_w_yt__encryption_key
+  encryption: {}
+# The runtime API key can't be inherited at build time, so OTA keeps its own.
 ota:
   - platform: esphome
     encryption:
+      key: !secret smart_plug_zld_44eufr_w_yt__encryption_key
 
+# No Wi-Fi credentials are compiled in. Without saved credentials (fresh flash
+# or factory reset) the plug starts the open AP right away; pick the network in
+# the captive portal. While the AP is up the portal also accepts unauthenticated
+# firmware uploads.
 wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
   ap:
     ssid: smart-plug-44
-    password: !secret smart_plug_zld_44eufr_w_yt__ap_password
 captive_portal:
 
 substitutions:
