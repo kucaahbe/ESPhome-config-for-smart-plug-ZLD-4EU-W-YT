@@ -88,6 +88,7 @@ binary_sensor:
         - light.turn_off: led_main
         - light.turn_on: led_main
     device_class: power
+    icon: "mdi:power"
 
 output:
   - id: light_output_main
