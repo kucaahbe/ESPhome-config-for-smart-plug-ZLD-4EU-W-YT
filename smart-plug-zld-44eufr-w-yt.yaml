@@ -81,7 +81,7 @@ binary_sensor:
     name: Power On
     device_class: power
     icon: "mdi:power"
-    on_click:
+    on_press:
       - then:
           - switch.turn_on: shutdown0
 
