@@ -58,7 +58,8 @@ switch:
     name: USB
     pin: P26
     id: usb
-    icon: "mdi:power-socket-eu"
+    icon: "mdi:usb-port"
+    inverted: true
 
 # The LED is directly controlled via the state of the relay with the switch above
 light:
