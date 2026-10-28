@@ -4,6 +4,7 @@
 esphome:
   name: smart-plug-zld-44eufr-w-yt
   friendly_name: smart plug ZLD-44EU(FR)-W-YT
+  min_version: 2026.1.0
 
 bk72xx:
   board: generic-bk7231n-qfn32-tuya
@@ -32,41 +33,58 @@ substitutions:
   bl0937_voltage_divider: "750"
   bl0937_current_resistor: "0.0025 ohm"
 
-switch:
+output:
   - platform: gpio
-    name: Socket 1
+    id: socket1_out
     pin: P6
+  - platform: gpio
+    id: socket2_out
+    pin: P7
+  - platform: gpio
+    id: socket3_out
+    pin: P24
+  - platform: gpio
+    id: socket4_out
+    pin: P8
+  - platform: gpio
+    id: usb_out
+    pin:
+      number: P26
+      inverted: true
+
+# Relays are driven through outputs so power_off can cut them without
+# persisting "off" as the restore state of the switches.
+switch:
+  - platform: output
+    name: Socket 1
+    output: socket1_out
     id: socket1
     restore_mode: RESTORE_DEFAULT_ON
     device_class: outlet
-  - platform: gpio
+  - platform: output
     name: Socket 2
-    pin: P7
+    output: socket2_out
     id: socket2
     restore_mode: RESTORE_DEFAULT_ON
     device_class: outlet
-  - platform: gpio
+  - platform: output
     name: Socket 3
-    pin: P24
+    output: socket3_out
     id: socket3
     restore_mode: RESTORE_DEFAULT_ON
     device_class: outlet
-  - platform: gpio
+  - platform: output
     name: Socket 4
-    pin: P8
+    output: socket4_out
     id: socket4
     restore_mode: RESTORE_DEFAULT_ON
     device_class: outlet
-  - platform: gpio
+  - platform: output
     name: USB
-    pin: P26
+    output: usb_out
     id: usb
     icon: "mdi:usb-port"
-    inverted: true
     restore_mode: RESTORE_DEFAULT_ON
-  - platform: shutdown
-    internal: false
-    id: shutdown0
 
 light:
   - platform: status_led
@@ -74,24 +92,76 @@ light:
     pin:
       number: P11
 
+# Waking from deep sleep needs a long press on the button; short clicks are
+# ignored by the BK7231N. Keeping P10's pull-up on during sleep (custom
+# lambda instead of this component) was tried and didn't change that.
+deep_sleep:
+  id: deep_sleep_ctrl
+  wakeup_pin:
+    number: P10
+    allow_other_uses: true
+    inverted: true
+    mode:
+      input: true
+      pullup: true
+  wakeup_pin_mode: KEEP_AWAKE
+
+script:
+  - id: power_off
+    then:
+      - script.stop: hold_feedback
+      - light.turn_off: main_status_led
+      - output.turn_off: socket1_out
+      - output.turn_off: socket2_out
+      - output.turn_off: socket3_out
+      - output.turn_off: socket4_out
+      - output.turn_off: usb_out
+      - deep_sleep.enter: deep_sleep_ctrl
+  - id: hold_feedback
+    mode: restart
+    then:
+      - delay: 5s
+      - while:
+          condition:
+            lambda: return true;
+          then:
+            - light.toggle: main_status_led
+            - delay: 150ms
+
 binary_sensor:
   - platform: gpio
+    id: main_button
     pin:
       number: P10
+      allow_other_uses: true
       mode:
         input: true
         pullup: true
-    name: Power On
-    device_class: power
+      inverted: true
+    internal: true
+    on_press:
+      - script.execute: hold_feedback
+    on_release:
+      - script.stop: hold_feedback
+    on_click:
+      - min_length: 50ms
+        max_length: 1s
+        then:
+          - script.execute: power_off
+      - min_length: 5s
+        max_length: 60s
+        then:
+          - button.press: factory_reset_btn
+
+button:
+  - platform: template
+    name: Turn off
     icon: "mdi:power"
     on_press:
-      - then:
-          - switch.turn_on: shutdown0
-
-output:
-  #- id: light_output_main
-  #  platform: gpio
-  #  pin: P11
+      - script.execute: power_off
+  - platform: factory_reset
+    id: factory_reset_btn
+    internal: true
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
 sensor:
