@@ -87,7 +87,7 @@ binary_sensor:
 output:
   - id: light_output_main
     platform: gpio
-    inverted: true
+    inverted: false
     pin: P14
   #- id: light_output4
   #  platform: gpio
