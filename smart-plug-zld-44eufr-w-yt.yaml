@@ -89,8 +89,18 @@ switch:
 light:
   - platform: status_led
     id: main_status_led
+    restore_mode: ALWAYS_ON
     pin:
       number: P11
+      inverted: true
+    effects:
+      - strobe:
+          name: Main button hold
+          colors:
+            - state: true
+              duration: 150ms
+            - state: false
+              duration: 150ms
 
 # Waking from deep sleep needs a long press on the button; short clicks are
 # ignored by the BK7231N. Keeping P10's pull-up on during sleep (custom
@@ -121,12 +131,9 @@ script:
     mode: restart
     then:
       - delay: 5s
-      - while:
-          condition:
-            lambda: return true;
-          then:
-            - light.toggle: main_status_led
-            - delay: 150ms
+      - light.turn_on:
+          id: main_status_led
+          effect: Main button hold
 
 binary_sensor:
   - platform: gpio
@@ -143,12 +150,15 @@ binary_sensor:
       - script.execute: hold_feedback
     on_release:
       - script.stop: hold_feedback
+      - light.turn_on:
+          id: main_status_led
+          effect: None
     on_click:
       - min_length: 50ms
         max_length: 1s
         then:
           - script.execute: power_off
-      - min_length: 5s
+      - min_length: 6s
         max_length: 60s
         then:
           - button.press: factory_reset_btn
