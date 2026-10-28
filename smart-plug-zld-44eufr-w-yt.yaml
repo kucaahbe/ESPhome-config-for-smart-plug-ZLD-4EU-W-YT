@@ -34,7 +34,7 @@ switch:
     name: Socket 1
     pin: P6
     id: socket1
-    icon: "mdi:power-socket-eu"
+    #icon: "mdi:power-socket-eu"
     restore_mode: RESTORE_DEFAULT_ON
     device_class: outlet
   - platform: gpio
