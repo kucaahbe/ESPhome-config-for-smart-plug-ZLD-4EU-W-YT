@@ -19,7 +19,7 @@ api:
     key: !secret smart_plug_zld_44eufr_w_yt__encryption_key
 ota:
   - platform: esphome
-    password: !secret smart_plug_zld_44eufr_w_yt__ota_password
+    encryption:
 
 wifi:
   ssid: !secret wifi_ssid
