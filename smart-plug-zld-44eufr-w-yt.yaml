@@ -36,24 +36,28 @@ switch:
     id: socket1
     icon: "mdi:power-socket-eu"
     restore_mode: RESTORE_DEFAULT_ON
+    device_class: outlet
   - platform: gpio
     name: Socket 2
     pin: P7
     id: socket2
     icon: "mdi:power-socket-eu"
     restore_mode: RESTORE_DEFAULT_ON
+    device_class: outlet
   - platform: gpio
     name: Socket 3
     pin: P24
     id: socket3
     icon: "mdi:power-socket-eu"
     restore_mode: RESTORE_DEFAULT_ON
+    device_class: outlet
   - platform: gpio
     name: Socket 4
     pin: P8
     id: socket4
     icon: "mdi:power-socket-eu"
     restore_mode: RESTORE_DEFAULT_ON
+    device_class: outlet
   - platform: gpio
     name: USB
     pin: P26
