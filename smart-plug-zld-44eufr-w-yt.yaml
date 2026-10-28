@@ -63,9 +63,6 @@ switch:
     restore_mode: RESTORE_DEFAULT_ON
 
 light:
-  #- platform: binary
-  #  id: led_main
-  #  output: light_output_main
   - platform: status_led
     id: main_status_led
     pin:
