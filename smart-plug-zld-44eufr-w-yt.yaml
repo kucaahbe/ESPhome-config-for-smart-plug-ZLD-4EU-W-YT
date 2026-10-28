@@ -61,6 +61,9 @@ switch:
     icon: "mdi:usb-port"
     inverted: true
     restore_mode: RESTORE_DEFAULT_ON
+  - platform: shutdown
+    internal: true
+    id: shutdown0
 
 light:
   - platform: status_led
@@ -78,6 +81,9 @@ binary_sensor:
     name: Power On
     device_class: power
     icon: "mdi:power"
+    on_click:
+      - then:
+          - switch.turn_off: shutdown0
 
 output:
   #- id: light_output_main
