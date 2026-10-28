@@ -89,7 +89,7 @@ output:
   - id: light_output_main
     platform: gpio
     inverted: false
-    pin: P14
+    pin: P11 #P14
   #- id: light_output4
   #  platform: gpio
   #  inverted: true
