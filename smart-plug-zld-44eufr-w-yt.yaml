@@ -76,7 +76,6 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-      inverted: true
     name: Power On
     device_class: power
     icon: "mdi:power"
