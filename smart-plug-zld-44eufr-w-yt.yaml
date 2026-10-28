@@ -68,7 +68,7 @@ light:
     id: led_main
     output: light_output_main
     internal: true
-    restore_mode: ALWAYS_ON
+    restore_mode: ALWAYS_OFF
 
 binary_sensor:
   - platform: gpio
