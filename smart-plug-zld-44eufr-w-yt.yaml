@@ -8,6 +8,9 @@ esphome:
 bk72xx:
   board: generic-bk7231n-qfn32-tuya
 
+bk72xx_ble:
+  enable_on_boot: false
+
 logger:
 
 api:
