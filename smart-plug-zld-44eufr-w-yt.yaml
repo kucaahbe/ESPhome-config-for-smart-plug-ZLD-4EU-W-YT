@@ -112,4 +112,4 @@ sensor:
 #      name: BL0937 Energy
 #    voltage_divider: $bl0937_voltage_divider
 #    current_resistor: $bl0937_current_resistor
-#    update_interval: 10s
+    update_interval: 10s
