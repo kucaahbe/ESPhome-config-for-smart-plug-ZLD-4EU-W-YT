@@ -82,11 +82,6 @@ binary_sensor:
         input: true
         pullup: false
     name: Power On
-    on_click:
-      min_length: 50ms
-      then:
-        - light.turn_off: led_main
-        - light.turn_on: led_main
     device_class: power
     icon: "mdi:power"
 
