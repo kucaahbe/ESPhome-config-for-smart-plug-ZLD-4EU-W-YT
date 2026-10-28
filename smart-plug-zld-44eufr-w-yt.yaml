@@ -65,9 +65,13 @@ switch:
     restore_mode: RESTORE_DEFAULT_ON
 
 light:
-  - platform: binary
-    id: led_main
-    output: light_output_main
+  #- platform: binary
+  #  id: led_main
+  #  output: light_output_main
+  - platform: status_led
+    name: Status LED Light
+    id: light_status_led_1
+    pin: P11
 
 binary_sensor:
   - platform: gpio
@@ -81,9 +85,9 @@ binary_sensor:
     icon: "mdi:power"
 
 output:
-  - id: light_output_main
-    platform: gpio
-    pin: P11
+  #- id: light_output_main
+  #  platform: gpio
+  #  pin: P11
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
 sensor:
