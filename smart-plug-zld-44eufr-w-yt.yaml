@@ -89,7 +89,7 @@ output:
   - id: light_output_main
     platform: gpio
     inverted: false
-    pin: P11 #P14
+    pin: P11
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
 #sensor:
