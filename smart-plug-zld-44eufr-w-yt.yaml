@@ -64,7 +64,6 @@ switch:
     inverted: true
     restore_mode: RESTORE_DEFAULT_ON
 
-# The LED is directly controlled via the state of the relay with the switch above
 light:
   - platform: binary
     name: Main LED
