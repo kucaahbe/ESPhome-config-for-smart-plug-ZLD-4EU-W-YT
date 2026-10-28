@@ -13,6 +13,7 @@ bk72xx_ble:
   enable_on_boot: false
 
 logger:
+  level: INFO
 
 # No API key is compiled in: Home Assistant generates one when the device is
 # added and the plug stores it in flash until a factory reset.
