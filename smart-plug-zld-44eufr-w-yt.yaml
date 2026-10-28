@@ -86,11 +86,11 @@ output:
     pin: P11
 
 # The pins were checked with a multimeter and the datasheet for the built in BL0937.
-#sensor:
-#  - platform: uptime
-#    name: Uptime
-#  - platform: internal_temperature
-#    name: "Internal Temperature"
+sensor:
+  - platform: uptime
+    name: Uptime
+  - platform: internal_temperature
+    name: "Internal Temperature"
 #  - platform: hlw8012
 #    model: BL0937
 #    cf_pin:
